@@ -9,7 +9,7 @@ const ruleName = rule.ruleName
 testRule(rule, {
   ruleName,
   config: [true],
-  skipBasicChecks: true,
+  // skipBasicChecks: true,
   accept: [{
     code:
       `

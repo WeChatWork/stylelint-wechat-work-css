@@ -23,7 +23,7 @@ testRule(rule, {
     'opacity',
     'keyframes'
   ]],
-  skipBasicChecks: true,
+  // skipBasicChecks: true,
   accept: [{
     code:
       `
@@ -47,7 +47,7 @@ testRule(rule, {
       @include box-sizing(content-box);
     }
     `,
-    // message: messages.rejected,
+    message: messages.rejected("box-sizing"),
   },
 
     {
@@ -57,7 +57,7 @@ testRule(rule, {
       @include transition(all 0.5s ease-in);
     }
     `,
-      // message: messages.rejected,
+      message: messages.rejected("transition"),
     }, {
       code:
         `
@@ -66,7 +66,7 @@ testRule(rule, {
       @include transition(all 0.5s ease-in);
     }
     `,
-      // message: messages.rejected,
+      message: messages.rejected("transition"),
     }, {
       code:
         `
@@ -75,8 +75,7 @@ testRule(rule, {
       @include scale(1);
     }
     `,
-      // message: messages.rejected,
+      message: messages.rejected("scale"),
     }
-
   ],
 })

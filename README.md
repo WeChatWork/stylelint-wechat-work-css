@@ -1,8 +1,8 @@
 # stylelint-wechat-work-css
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 [![Build Status](https://travis-ci.com/Jeff2Ma/stylelint-wechat-work-css.svg?token=GYDpgZAn7xjbjDfx6yNt&branch=master)](https://travis-ci.com/Jeff2Ma/stylelint-wechat-work-css)
 [![npm version](https://badge.fury.io/js/stylelint-wechat-work-css.svg)](https://www.npmjs.com/package/stylelint-wechat-work-css)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 > Special stylelint rules for [WeChat for Work](https://work.weixin.qq.com) project css. 企业微信项目 Stylelint 自定义规则
 
