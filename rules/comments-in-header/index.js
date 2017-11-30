@@ -23,11 +23,15 @@ function rule (actual) {
       return
     }
 
+    if (!root.first) {
+      return
+    }
+
     // console.log(root.index(root.first),root.first.toString())
 
     // 注释肯定是在第一或第二个代码段位置,
     // 换而言之，第一个肯定是 @charset "UTF-8"; 或者注释
-    if (root.first.type === 'atrule' && root.first.name === 'charset') {
+    if (root.first && root.first.type === 'atrule' && root.first.name === 'charset') {
       // 当第一个节点为 @charset "UTF-8"; 的时候，第二个节点应该为文件注释头
       if (root.nodes[1].type === 'comment') {
         let targetComment = root.nodes[1].toString()
@@ -37,7 +41,7 @@ function rule (actual) {
         }
       }
     } else {
-      if (root.first.type === 'comment') {
+      if (root.first && root.first.type === 'comment') {
         let targetComment = root.first.toString()
         // console.log(targetComment)
         if (vaildComment(targetComment)) {

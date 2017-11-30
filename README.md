@@ -2,6 +2,8 @@
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
+[![npm version](https://badge.fury.io/js/stylelint-wechat-work-css.svg)](https://www.npmjs.com/package/stylelint-wechat-work-css)
+
 > Special stylelint rules for [WeChat for Work](https://work.weixin.qq.com) project css. 企业微信项目 Stylelint 自定义规则
 
 > Notice: This plugin is still developing.
@@ -25,30 +27,34 @@ npm i stylelint-wechat-work-css -D
 
 ## Usege
 
+Add `stylelint-wechat-work-css` to your stylelint config plugins array, then add rules you need to the rules object.
+
 ```
-"plugins": [
-    "stylelint-wechat-work-css"
-],
-"rules": {
-    "wechat-work/unused-mixins":
-        [
-            '/^transition/',
-            '/^transform/',
-            '/^translate/',
-            '/^scale/',
-            '/^rotate/',
-            '/^animation/',
-            'box-sizing',
-            'box_sizing',
-            'inlineBlock',
-            'box-shadow',
-            'box_shadow',
-            'opacity',
-            'keyframes'
-        ],
-    "wechat-work/comments-in-header": true,
-    "wechat-work/selector-namespace-follow-filename": true,
-    "wechat-work/unused-nested-selector-namespace": true,
+{
+	"plugins": [
+		"stylelint-wechat-work-css"
+	],
+	"rules": {
+	"wechat-work/unused-mixins":
+	    [
+	        '/^transition/',
+	        '/^transform/',
+	        '/^translate/',
+	        '/^scale/',
+	        '/^rotate/',
+	        '/^animation/',
+	        'box-sizing',
+	        'box_sizing',
+	        'inlineBlock',
+	        'box-shadow',
+	        'box_shadow',
+	        'opacity',
+	        'keyframes'
+	    ],
+	"wechat-work/comments-in-header": true,
+	"wechat-work/selector-namespace-follow-filename": true,
+	"wechat-work/unused-nested-selector-namespace": true,
+	}
 }
 
 ```

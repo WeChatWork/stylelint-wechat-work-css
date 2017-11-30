@@ -21,12 +21,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "ava index.test.js rules/**/test.js"
   },
   "author": "Jeff2Ma",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.18.2",
+    "ava": "^0.24.0",
     "eslint": "^3.16.1",
     "stylelint-test-rule-ava": "^0.2.0"
   },
