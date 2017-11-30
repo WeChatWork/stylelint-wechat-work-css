@@ -5,8 +5,10 @@ const namespace = require('../../utils/namespace')
 const path = require('path')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('selector-namespace-follow-filename')
+const matchesStringOrRegExp = require('../../utils/matchesStringOrRegExp')
+const postcss = require('postcss')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  expected: (selector, namespace) => `[wechat-work] Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
+  expected: (selector, namespace) => `${msgPrefix.main} Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
 })
 
 function rule (actual) {
@@ -27,7 +29,9 @@ function rule (actual) {
       // console.log(typeof rule.source.input.file)
 
       // 从代码源scss文件中获取到命名空间
-      const fileDir = path.dirname(rule.source.input.file)
+      const fileDirArray = rule.source.input.file.split(path.sep)
+      const fileDir = fileDirArray[fileDirArray.length - 2]
+      // console.log(fileDir)
       let filename = path.basename(rule.source.input.file, '.scss')
       let filenameSpace = filename.replace('_', '').toLowerCase()
       const ruleSelector = rule.selector.toLowerCase()
@@ -38,17 +42,25 @@ function rule (actual) {
       }
 
       // 排除组件，特殊目录下的非业务代码
-      if (fileDir.indexOf('logic') <= 0) {
-        return
-      }
+      // if (fileDir.indexOf('logic') <= 0) {
+      //   return
+      // }
 
       // 排除特殊目录
-      if (fileDir.indexOf('mobile') > -1 || fileDir.indexOf('singlePage') > -1 || fileDir.indexOf('widget_official') > -1 || fileDir.indexOf('component') > -1) {
+      /* if (fileDir.indexOf('mobile') > -1 || fileDir.indexOf('singlePage') > -1 || fileDir.indexOf('widget_official') > -1 || fileDir.indexOf('component') > -1) {
+         return
+       }*/
+      const fileDirWhiteList = ['mobile', 'singlePage', /^widget/, 'component']
+      if (matchesStringOrRegExp(postcss.vendor.unprefixed(fileDir), fileDirWhiteList)) {
         return
       }
 
       // 排除文件名中含有 base,basic 等字样的，基础文件，不受命名空间的约束
-      if (filename.indexOf('base') > -1 || filename.indexOf('basic') > -1 || filename.indexOf('hotfix') > -1 || filename.indexOf('widget') > -1) {
+      /*if (filename.indexOf('base') > -1 || filename.indexOf('basic') > -1 || filename.indexOf('hotfix') > -1 || filename.indexOf('widget') > -1) {
+        return
+      }*/
+      const filenameWhitelist = ['/^base/', '/^basic/', 'hotfix', 'widget']
+      if (matchesStringOrRegExp(postcss.vendor.unprefixed(filename), filenameWhitelist)) {
         return
       }
 
