@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-const selectorParser = require('postcss-selector-parser');
+const selectorParser = require('postcss-selector-parser')
 
-module.exports = function(selector, result, node, cb) {
+module.exports = function (selector, result, node, cb) {
   try {
-    selectorParser(cb).process(selector);
+    selectorParser(cb).process(selector)
   } catch (e) {
-    result.warn('Cannot parse selector', {node});
+    result.warn('Cannot parse selector', {node})
   }
-};
+}

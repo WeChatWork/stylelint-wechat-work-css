@@ -1,5 +1,5 @@
-const msgPrefix = "[qmui] ";
+const msgPrefix = '[wechat-work] '
 
 module.exports = {
-  "main": msgPrefix
-};
+  'main': msgPrefix
+}

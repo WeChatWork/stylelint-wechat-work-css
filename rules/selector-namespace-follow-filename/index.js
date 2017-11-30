@@ -1,19 +1,19 @@
-'use strict';
+'use strict'
 
-const stylelint = require('stylelint');
-const namespace = require('../../utils/namespace');
-const path = require('path');
-const msgPrefix = require('../../utils/messagePrefix');
-const ruleName = namespace('selector-namespace-follow-filename');
+const stylelint = require('stylelint')
+const namespace = require('../../utils/namespace')
+const path = require('path')
+const msgPrefix = require('../../utils/messagePrefix')
+const ruleName = namespace('selector-namespace-follow-filename')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  expected: (selector, namespace) => `[qmui] Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
-});
+  expected: (selector, namespace) => `[wechat-work] Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
+})
 
-function rule(actual) {
+function rule (actual) {
   return (root, result) => {
-    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual});
+    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual})
     if (!validOptions) {
-      return;
+      return
     }
 
     root.walkRules(rule => {
@@ -21,51 +21,51 @@ function rule(actual) {
       // 仅检测根节点的选择器名字
       // 修正在webstorm 上找不到源文件的 bug
       if (!rule.source.input.file || rule.parent.type !== 'root') {
-        return;
+        return
       }
 
       // console.log(typeof rule.source.input.file)
 
       // 从代码源scss文件中获取到命名空间
-      const fileDir = path.dirname(rule.source.input.file);
-      let filename = path.basename(rule.source.input.file, '.scss');
-      let filenameSpace = filename.replace('_', '').toLowerCase();
-      const ruleSelector = rule.selector.toLowerCase();
+      const fileDir = path.dirname(rule.source.input.file)
+      let filename = path.basename(rule.source.input.file, '.scss')
+      let filenameSpace = filename.replace('_', '').toLowerCase()
+      const ruleSelector = rule.selector.toLowerCase()
 
       // 排除 % 这些placehoder及 id 选择器
       if (ruleSelector.indexOf('%') > -1 || ruleSelector.indexOf('#') > -1) {
-        return;
+        return
       }
 
       // 排除组件，特殊目录下的非业务代码
       if (fileDir.indexOf('logic') <= 0) {
-        return;
+        return
       }
 
       // 排除特殊目录
       if (fileDir.indexOf('mobile') > -1 || fileDir.indexOf('singlePage') > -1 || fileDir.indexOf('widget_official') > -1 || fileDir.indexOf('component') > -1) {
-        return;
+        return
       }
 
       // 排除文件名中含有 base,basic 等字样的，基础文件，不受命名空间的约束
-      if (filename.indexOf('base') > -1 || filename.indexOf('basic') > -1 || filename.indexOf('hotfix') > -1 || filename.indexOf('widget') > -1 ) {
-        return;
+      if (filename.indexOf('base') > -1 || filename.indexOf('basic') > -1 || filename.indexOf('hotfix') > -1 || filename.indexOf('widget') > -1) {
+        return
       }
 
       // 排除 ww_开头的
       if (fileDir.indexOf('widget') > -1 && ruleSelector.indexOf('ww') > -1) {
-        return;
+        return
       }
 
       // // 兼容 open 项目的情况
       // console.log(filenameSpace)
       if (filenameSpace.indexOf('wwopen_') > -1) {
-        filenameSpace = filenameSpace.replace('wwopen_', '');
+        filenameSpace = filenameSpace.replace('wwopen_', '')
       }
 
       // 命名空间对比
-      if (ruleSelector.split('_')[0].replace('.','') === filenameSpace) {
-        return;
+      if (ruleSelector.split('_')[0].replace('.', '') === filenameSpace) {
+        return
       }
 
       stylelint.utils.report({
@@ -73,11 +73,11 @@ function rule(actual) {
         node: rule,
         result,
         ruleName,
-      });
-    });
-  };
+      })
+    })
+  }
 }
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-module.exports = rule;
+rule.ruleName = ruleName
+rule.messages = messages
+module.exports = rule

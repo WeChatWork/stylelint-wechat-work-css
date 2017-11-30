@@ -1,5 +1,5 @@
-const prefix = 'qmui';
+const prefix = 'wechat-work'
 
-module.exports = function namespace(ruleName) {
-  return `${prefix}/${ruleName}`;
-};
+module.exports = function namespace (ruleName) {
+  return `${prefix}/${ruleName}`
+}

@@ -1,48 +1,47 @@
-'use strict';
-
+'use strict'
 
 // 参考 https://github.com/stylelint/stylelint/blob/f6fbad37e1ffa84aed4a996b3829b4275e7320c5/lib/rules/at-rule-blacklist/index.js
-const _ = require("lodash");
-const stylelint = require('stylelint');
-const namespace = require('../../utils/namespace');
-const msgPrefix = require('../../utils/messagePrefix');
-const ruleName = namespace('unused-mixins');
-const validateOptions = require("../../utils/validateOptions");
-const matchesStringOrRegExp = require("../../utils/matchesStringOrRegExp");
-const postcss = require("postcss");
+const _ = require('lodash')
+const stylelint = require('stylelint')
+const namespace = require('../../utils/namespace')
+const msgPrefix = require('../../utils/messagePrefix')
+const ruleName = namespace('unused-mixins')
+const validateOptions = require('../../utils/validateOptions')
+const matchesStringOrRegExp = require('../../utils/matchesStringOrRegExp')
+const postcss = require('postcss')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: (mixinName) => `[qmui] Not suggest to use "${mixinName}" mixin in project, please use native grammar instead.`,
-});
+  rejected: (mixinName) => `[wechat-work] Not suggest to use "${mixinName}" mixin in project, please use native grammar instead.`,
+})
 
 // mixins 黑名单
 // const blacklistInput = ['transition', 'box-sizing', 'box_sizing', 'inlineBlock', 'box-shadow', 'box_shadow', 'opacity', 'transform', 'animation', 'keyframes', 'translate']
 
-function rule(blacklist) {
+function rule (blacklist) {
   // console.log("rule-value",blacklist)
   return (root, result) => {
     // const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual});
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: blacklist,
       possible: [_.isString]
-    });
+    })
     if (!validOptions) {
-      return;
+      return
     }
 
     root.walkAtRules(atRule => {
-      const name = atRule.name;
-      const atRuleParams = atRule.params;
+      const name = atRule.name
+      const atRuleParams = atRule.params
 
       // 排除非 @include
       if (name !== 'include') {
-        return;
+        return
       }
 
       // 从 param 中获取到 mixin 的名字
       // 下面的正则表达式有 bug
       // const mixinName = atRuleParams.replace(/(\s*?)\((?:\s|\S)*\)/g, "");
-      const mixinNameBefore = atRuleParams.indexOf('(') > -1 ? atRuleParams.split('(')[0] : atRuleParams;
-      const mixinName = mixinNameBefore.trim();
+      const mixinNameBefore = atRuleParams.indexOf('(') > -1 ? atRuleParams.split('(')[0] : atRuleParams
+      const mixinName = mixinNameBefore.trim()
       // console.log(mixinName.trim())
       // const blacklist = blacklistInput.join('|');
 
@@ -63,7 +62,7 @@ function rule(blacklist) {
       */
 
       if (!matchesStringOrRegExp(postcss.vendor.unprefixed(mixinName), blacklist)) {
-        return;
+        return
       }
 
       stylelint.utils.report({
@@ -74,10 +73,11 @@ function rule(blacklist) {
       })
 
       // console.log()
-    });
-  };
+    })
+  }
 }
-rule.primaryOptionArray = true;
-rule.ruleName = ruleName;
-rule.messages = messages;
-module.exports = rule;
+
+rule.primaryOptionArray = true
+rule.ruleName = ruleName
+rule.messages = messages
+module.exports = rule
