@@ -1,5 +1,6 @@
 'use strict'
 
+const _ = require('lodash')
 const stylelint = require('stylelint')
 const namespace = require('../../utils/namespace')
 const path = require('path')
@@ -11,9 +12,22 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   expected: (selector, namespace) => `${msgPrefix.main} Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
 })
 
-function rule (actual) {
+function rule (actual, options) {
   return (root, result) => {
-    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual})
+    const validOptions = stylelint.utils.validateOptions(
+      result,
+      ruleName,
+      {actual},
+      {
+        actual: options,
+        possible: {
+          fileDirWhiteList: [_.isString],
+          filenameWhitelist: [_.isString]
+        },
+        optional: true
+      }
+    )
+
     if (!validOptions) {
       return
     }
@@ -41,25 +55,15 @@ function rule (actual) {
         return
       }
 
-      // 排除组件，特殊目录下的非业务代码
-      // if (fileDir.indexOf('logic') <= 0) {
-      //   return
-      // }
-
       // 排除特殊目录
-      /* if (fileDir.indexOf('mobile') > -1 || fileDir.indexOf('singlePage') > -1 || fileDir.indexOf('widget_official') > -1 || fileDir.indexOf('component') > -1) {
-         return
-       }*/
-      const fileDirWhiteList = ['mobile', 'singlePage', /^widget/, 'component']
+      const fileDirWhiteList = options.fileDirWhiteList
+      // console.log(fileDirWhiteList)
       if (matchesStringOrRegExp(postcss.vendor.unprefixed(fileDir), fileDirWhiteList)) {
         return
       }
 
-      // 排除文件名中含有 base,basic 等字样的，基础文件，不受命名空间的约束
-      /*if (filename.indexOf('base') > -1 || filename.indexOf('basic') > -1 || filename.indexOf('hotfix') > -1 || filename.indexOf('widget') > -1) {
-        return
-      }*/
-      const filenameWhitelist = ['/^base/', '/^basic/', 'hotfix', 'widget']
+      // 排除特殊文件名
+      const filenameWhitelist = options.filenameWhitelist
       if (matchesStringOrRegExp(postcss.vendor.unprefixed(filename), filenameWhitelist)) {
         return
       }
@@ -69,7 +73,7 @@ function rule (actual) {
         return
       }
 
-      // // 兼容 open 项目的情况
+      // 兼容 open 项目的情况
       // console.log(filenameSpace)
       if (filenameSpace.indexOf('wwopen_') > -1) {
         filenameSpace = filenameSpace.replace('wwopen_', '')

@@ -29,36 +29,44 @@ npm i stylelint-wechat-work-css -D
 
 Add `stylelint-wechat-work-css` to your stylelint config plugins array, then add rules you need to the rules object.
 
+example:
+
 ```
 {
-	"plugins": [
-		"stylelint-wechat-work-css"
-	],
-	"rules": {
-	"wechat-work/unused-mixins":
-	    [
-	        '/^transition/',
-	        '/^transform/',
-	        '/^translate/',
-	        '/^scale/',
-	        '/^rotate/',
-	        '/^animation/',
-	        'box-sizing',
-	        'box_sizing',
-	        'inlineBlock',
-	        'box-shadow',
-	        'box_shadow',
-	        'opacity',
-	        'keyframes'
-	    ],
-	"wechat-work/comments-in-header": true,
-	"wechat-work/selector-namespace-follow-filename": true,
-	"wechat-work/unused-nested-selector-namespace": true,
-	}
+  'plugins': [
+    'stylelint-wechat-work-css'
+  ],
+  'rules': {
+    'wechat-work/unused-mixins':
+      [
+        '/^transition/',
+        '/^transform/',
+        '/^translate/',
+        '/^scale/',
+        '/^rotate/',
+        '/^animation/',
+        'box-sizing',
+        'box_sizing',
+        'inlineBlock',
+        'box-shadow',
+        'box_shadow',
+        'opacity',
+        'keyframes'
+      ],
+    'wechat-work/comments-in-header': true,
+    'wechat-work/selector-namespace-follow-filename':[ true,{
+      'fileDirWhiteList': ['mobile', 'singlePage', '/^widget/', 'component'],
+      'filenameWhitelist': ['/^base/', '/^basic/', 'hotfix', 'widget']
+    }
+    ],
+    'wechat-work/unused-nested-selector-namespace': true,
+  }
 }
 
 ```
 
-## Thanks
+## Contributing
 
 Inspired from [stylelint-suitcss](https://github.com/suitcss/stylelint-suitcss).
+
+Issues and Pull requests are welcome.
