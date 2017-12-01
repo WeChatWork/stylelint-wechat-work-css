@@ -33,6 +33,7 @@ example:
 
 ```
 {
+  'ignoreFiles': ['./sdfasfasfd/*.scss'],
   'plugins': [
     'stylelint-wechat-work-css'
   ],
@@ -54,7 +55,7 @@ example:
         'keyframes'
       ],
     'wechat-work/comments-in-header': true,
-    'wechat-work/selector-namespace-follow-filename':[ true,{
+    'wechat-work/selector-namespace-follow-filename': [true, {
       'fileDirWhiteList': ['mobile', 'singlePage', '/^widget/', 'component'],
       'filenameWhitelist': ['/^base/', '/^basic/', 'hotfix', 'widget']
     }
