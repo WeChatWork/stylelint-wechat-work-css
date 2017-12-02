@@ -29,11 +29,10 @@ npm i stylelint-wechat-work-css -D
 
 Add `stylelint-wechat-work-css` to your stylelint config plugins array, then add rules you need to the rules object.
 
-example:
+Example:
 
 ```
 {
-  'ignoreFiles': ['./sdfasfasfd/*.scss'],
   'plugins': [
     'stylelint-wechat-work-css'
   ],
