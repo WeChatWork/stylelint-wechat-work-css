@@ -47,35 +47,34 @@ testRule(rule, {
       @include box-sizing(content-box);
     }
     `,
-    message: messages.rejected("box-sizing"),
+    message: messages.rejected('box-sizing'),
   },
-
-    {
-      code:
-        `
-    .b {
-      @include transition(all 0.5s ease-in);
-    }
-    `,
-      message: messages.rejected("transition"),
-    }, {
-      code:
-        `
-    .c {
-      box-sizing: content-box;
-      @include transition(all 0.5s ease-in);
-    }
-    `,
-      message: messages.rejected("transition"),
-    }, {
-      code:
-        `
-    .d {
-      box-sizing: content-box;
-      @include scale(1);
-    }
-    `,
-      message: messages.rejected("scale"),
-    }
-  ],
+  {
+    code:
+      `
+  .b {
+    @include transition(all 0.5s ease-in);
+  }
+  `,
+    message: messages.rejected('transition')
+  }, {
+    code:
+      `
+  .c {
+    box-sizing: content-box;
+    @include transition(all 0.5s ease-in);
+  }
+  `,
+    message: messages.rejected('transition')
+  }, {
+    code:
+      `
+  .d {
+    box-sizing: content-box;
+    @include scale(1);
+  }
+  `,
+    message: messages.rejected('scale')
+  }
+  ]
 })

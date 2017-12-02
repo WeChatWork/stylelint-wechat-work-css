@@ -46,7 +46,7 @@ testRule(rule, {
       }
     }
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -56,7 +56,7 @@ testRule(rule, {
       }
     }
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -66,7 +66,7 @@ testRule(rule, {
       }
     }
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -76,6 +76,6 @@ testRule(rule, {
       }
     }
     `,
-    message: messages.rejected,
-  }],
+    message: messages.rejected
+  }]
 })

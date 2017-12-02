@@ -17,3 +17,4 @@ module.exports = function (string) {
 
   return false
 }
+Ω

@@ -25,6 +25,8 @@ const ignoredOptions = ['severity', 'message']
  *    - `optional` (optional): If this is `true`, `actual` can be undefined.
  * @return {boolean} Whether or not the options are valid (true = valid)
  */
+
+/* eslint-disable */
 module.exports = function (result /*: Object*/,
                            ruleName /*: string*/) /*: boolean*/ {
   let noErrors = true
@@ -45,6 +47,8 @@ module.exports = function (result /*: Object*/,
 
   return noErrors
 }
+
+/* eslint-enable */
 
 function validate (opts, ruleName, complain) {
   const possible = opts.possible

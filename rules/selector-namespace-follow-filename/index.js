@@ -9,7 +9,7 @@ const ruleName = namespace('selector-namespace-follow-filename')
 const matchesStringOrRegExp = require('../../utils/matchesStringOrRegExp')
 const postcss = require('postcss')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  expected: (selector, namespace) => `${msgPrefix.main} Expected selector "${selector}" to match source filename as namespace "${namespace}".`,
+  expected: (selector, namespace) => `${msgPrefix.main} Expected selector "${selector}" to match source filename as namespace "${namespace}".`
 })
 
 function rule (actual, options) {
@@ -33,7 +33,6 @@ function rule (actual, options) {
     }
 
     root.walkRules(rule => {
-
       // 仅检测根节点的选择器名字
       // 修正在webstorm 上找不到源文件的 bug
       if (!rule.source.input.file || rule.parent.type !== 'root') {
@@ -88,7 +87,7 @@ function rule (actual, options) {
         message: messages.expected(ruleSelector, filenameSpace),
         node: rule,
         result,
-        ruleName,
+        ruleName
       })
     })
   }

@@ -6,11 +6,10 @@ const stylelint = require('stylelint')
 const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('unused-mixins')
-const validateOptions = require('../../utils/validateOptions')
 const matchesStringOrRegExp = require('../../utils/matchesStringOrRegExp')
 const postcss = require('postcss')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: mixinName => `${msgPrefix.main} Not suggest to use \"${mixinName}\" mixin in project, please use native grammar instead.`,
+  rejected: mixinName => `${msgPrefix.main} Not suggest to use "${mixinName}" mixin in project, please use native grammar instead.`
 })
 
 // mixins 黑名单
@@ -69,7 +68,7 @@ function rule (blacklist) {
         ruleName,
         result,
         node: atRule,
-        message: messages.rejected(mixinName),
+        message: messages.rejected(mixinName)
       })
 
       // console.log()

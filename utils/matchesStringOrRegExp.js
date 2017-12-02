@@ -9,6 +9,9 @@
  * Any strings starting and ending with `/` are interpreted
  * as regular expressions.
  */
+
+/* eslint-disable */
+
 module.exports = function matchesStringOrRegExp (input /*: string | Array<string>*/,
                                                  comparison /*: string | Array<string>*/) /*: false | { match: string, pattern: string}*/ {
   if (!Array.isArray(input)) {
@@ -24,6 +27,8 @@ module.exports = function matchesStringOrRegExp (input /*: string | Array<string
 
   return false
 }
+
+/* eslint-enable */
 
 function testAgainstStringOrArray (value, comparison) {
   if (!Array.isArray(comparison)) {

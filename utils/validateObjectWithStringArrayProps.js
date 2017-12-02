@@ -13,6 +13,7 @@ const _ = require('lodash')
  * }
  */
 
+/* eslint-disable */
 module.exports = function (value /*: Object*/) /*: boolean*/ {
   if (!_.isPlainObject(value)) {
     return false
@@ -27,3 +28,4 @@ module.exports = function (value /*: Object*/) /*: boolean*/ {
     return value[key].every(item => _.isString(item))
   })
 }
+/* eslint-enable */

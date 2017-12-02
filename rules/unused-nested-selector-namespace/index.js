@@ -1,28 +1,27 @@
-'use strict';
+'use strict'
 
-const stylelint = require('stylelint');
-const namespace = require('../../utils/namespace');
-const msgPrefix = require('../../utils/messagePrefix');
-const ruleName = namespace('unused-nested-selector-namespace');
+const stylelint = require('stylelint')
+const namespace = require('../../utils/namespace')
+const msgPrefix = require('../../utils/messagePrefix')
+const ruleName = namespace('unused-nested-selector-namespace')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: `${msgPrefix.main} Not suggest to use 'qui_xxx' selector in project, please use 'ww_xxx'`,
-});
+  rejected: `${msgPrefix.main} Not suggest to use 'qui_xxx' selector in project, please use 'ww_xxx'`
+})
 
-function rule(actual) {
+function rule (actual) {
   return (root, result) => {
-    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual});
+    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual})
     if (!validOptions) {
-      return;
+      return
     }
 
     root.walkRules(rule => {
-
       if (rule.parent.type !== 'rule') {
-        return;
+        return
       }
 
       if (rule.selector.indexOf('qui_') <= -1) {
-        return;
+        return
       }
 
       // if (context.fix) {
@@ -35,14 +34,14 @@ function rule(actual) {
         message: messages.rejected,
         node: rule,
         result,
-        ruleName,
-      });
+        ruleName
+      })
 
       // console.log()
-    });
-  };
+    })
+  }
 }
 
-rule.ruleName = ruleName;
-rule.messages = messages;
-module.exports = rule;
+rule.ruleName = ruleName
+rule.messages = messages
+module.exports = rule

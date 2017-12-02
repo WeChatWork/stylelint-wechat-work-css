@@ -38,7 +38,7 @@ testRule(rule, {
     * @date 2016-07-01
     */
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -47,7 +47,7 @@ testRule(rule, {
     * @date 2016-07-01
     */
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -55,7 +55,7 @@ testRule(rule, {
     * test.scss
     */
     `,
-    message: messages.rejected,
+    message: messages.rejected
   }, {
     code:
       `
@@ -65,6 +65,6 @@ testRule(rule, {
     * @author test
     */
     `,
-    message: messages.rejected,
-  }],
+    message: messages.rejected
+  }]
 })

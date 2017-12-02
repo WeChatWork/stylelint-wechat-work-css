@@ -5,7 +5,7 @@ const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('comments-in-header')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected:  `${msgPrefix.main} Comments with info like \'@author\' \'@date\' should be existed in file header.`,
+  rejected: `${msgPrefix.main} Comments with info like '@author' '@date' should be existed in file header.`
 })
 
 // 验证头部注释是否有 @author 或 @data 这些关键词
@@ -54,9 +54,8 @@ function rule (actual) {
       message: messages.rejected,
       node: root,
       result,
-      ruleName,
+      ruleName
     })
-
   }
 }
 
