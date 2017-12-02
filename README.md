@@ -6,10 +6,6 @@
 
 > Special stylelint rules for [WeChat for Work](https://work.weixin.qq.com) project css. 企业微信项目 Stylelint 自定义规则
 
-> Notice: This plugin is still developing.
-
-
-
 ## Install
 
 ```		
