@@ -51,8 +51,8 @@ Example:
       ],
     'wechat-work/comments-in-header': true,
     'wechat-work/selector-namespace-follow-filename': [true, {
-      'fileDirWhiteList': ['mobile', 'singlePage', '/^widget/', 'component'],
-      'filenameWhitelist': ['/^base/', '/^basic/', 'hotfix', 'widget']
+      'fileDirWhiteList': ['reg-word', 'ignore-filedir', 'mobile', '/^widget/', 'component'],
+      'filenameWhitelist': ['/^reg-word/', 'ignore-filename']
     }
     ],
     'wechat-work/unused-nested-selector-namespace': true,
