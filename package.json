@@ -11,11 +11,11 @@
     "wechatwork",
     "wxwork"
   ],
-  "repository": "WeChatWork/stylelint-wechat-work-css",
+  "repository": "Jeff2Ma/stylelint-wechat-work-css",
   "bugs": {
-    "url": "https://github.com/WeChatWork/stylelint-wechat-work-css/issues"
+    "url": "https://github.com/Jeff2Ma/stylelint-wechat-work-css/issues"
   },
-  "homepage": "https://github.com/WeChatWork/stylelint-wechat-work-css",
+  "homepage": "https://github.com/Jeff2Ma/stylelint-wechat-work-css",
   "engines": {
     "node": ">=4"
   },
