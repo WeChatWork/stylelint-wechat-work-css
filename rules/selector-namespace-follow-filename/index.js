@@ -1,6 +1,6 @@
 'use strict'
 
-const _ = require('lodash')
+const isString = require('lodash.isstring')
 const stylelint = require('stylelint')
 const namespace = require('../../utils/namespace')
 const path = require('path')
@@ -21,8 +21,8 @@ function rule (actual, options) {
       {
         actual: options,
         possible: {
-          fileDirWhiteList: [_.isString],
-          filenameWhitelist: [_.isString]
+          fileDirWhiteList: [isString],
+          filenameWhitelist: [isString]
         },
         optional: true
       }

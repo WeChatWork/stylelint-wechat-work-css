@@ -1,7 +1,7 @@
 'use strict'
 
 // 参考 https://github.com/stylelint/stylelint/blob/f6fbad37e1ffa84aed4a996b3829b4275e7320c5/lib/rules/at-rule-blacklist/index.js
-const _ = require('lodash')
+const isString = require('lodash.isstring')
 const stylelint = require('stylelint')
 const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
@@ -21,7 +21,7 @@ function rule (blacklist) {
     // const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual});
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {
       actual: blacklist,
-      possible: [_.isString]
+      possible: [isString]
     })
     if (!validOptions) {
       return
