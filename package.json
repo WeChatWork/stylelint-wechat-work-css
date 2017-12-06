@@ -27,7 +27,7 @@
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.24.0",
-    "eslint": "^3.16.1",
+    "eslint": "^4.12.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
@@ -39,7 +39,7 @@
     "lodash.find": "^4.6.0",
     "lodash.isstring": "^4.0.1",
     "postcss": "^6.0.14",
-    "postcss-selector-parser": "^2.2.3",
-    "stylelint": "^7.11.1"
+    "postcss-selector-parser": "^3.1.1",
+    "stylelint": "^8.3.1"
   }
 }
