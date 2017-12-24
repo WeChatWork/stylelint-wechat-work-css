@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/WeChatWork/stylelint-wechat-work-css.svg)](https://greenkeeper.io/)
 
-[![Build Status](https://travis-ci.com/Jeff2Ma/stylelint-wechat-work-css.svg?token=GYDpgZAn7xjbjDfx6yNt&branch=master)](https://travis-ci.com/WeChatWork/stylelint-wechat-work-css)
+[![Build Status](https://travis-ci.org/WeChatWork/stylelint-wechat-work-css.svg?branch=master)](https://travis-ci.com/WeChatWork/stylelint-wechat-work-css)
 [![npm version](https://badge.fury.io/js/stylelint-wechat-work-css.svg)](https://www.npmjs.com/package/stylelint-wechat-work-css)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
