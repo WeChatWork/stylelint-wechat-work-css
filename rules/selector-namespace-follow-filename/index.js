@@ -74,9 +74,9 @@ function rule (actual, options) {
 
       // 兼容 open 项目的情况
       // console.log(filenameSpace)
-      if (filenameSpace.indexOf('wwopen_') > -1) {
-        filenameSpace = filenameSpace.replace('_wwopen_', '')
-        filenameSpace = filenameSpace.replace('wwopen_', '')
+      if (filenameSpace.indexOf('wwopen') > -1) {
+        filenameSpace = filenameSpace.replace('_wwopen', '')
+        filenameSpace = filenameSpace.replace('wwopen', '')
       }
 
       // 命名空间对比
