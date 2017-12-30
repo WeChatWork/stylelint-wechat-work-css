@@ -6,7 +6,7 @@
 [![npm version](https://badge.fury.io/js/stylelint-wechat-work-css.svg)](https://www.npmjs.com/package/stylelint-wechat-work-css)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> Special stylelint rules for [WeChat for Work](https://work.weixin.qq.com) project css. [企业微信](https://work.weixin.qq.com)项目 Stylelint 自定义规则
+> Special stylelint rules for [WeChat at Work](https://work.weixin.qq.com) project css. [企业微信](https://work.weixin.qq.com)项目 Stylelint 自定义规则
 
 ## Install
 
