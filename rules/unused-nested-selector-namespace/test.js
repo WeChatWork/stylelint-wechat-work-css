@@ -71,6 +71,16 @@ testRule(rule, {
     code:
       `
     .a {
+      .util_c_gray {
+        font-size: 12px;
+      }
+    }
+    `,
+    message: messages.rejected
+  }, {
+    code:
+      `
+    .a {
       .b .qui_btn {
         font-size: 12px;
       }

@@ -5,7 +5,7 @@ const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('unused-nested-selector-namespace')
 const messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: `${msgPrefix.main} Disallow 'qui_xxx' or 'util_xxx' selector in nested selectors.`
+  rejected: `${msgPrefix.main} Unexpected 'qui_xxx' or 'util_xxx' selector in nested`
 })
 
 function rule (actual) {
@@ -20,7 +20,7 @@ function rule (actual) {
         return
       }
 
-      if ((rule.selector.indexOf('qui_') <= -1) || (rule.selector.indexOf('util_') <= -1)) {
+      if (!((rule.selector.indexOf('.qui_') > -1) || (rule.selector.indexOf('.util_') > -1))) {
         return
       }
 
