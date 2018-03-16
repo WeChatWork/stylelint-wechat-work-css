@@ -5,7 +5,7 @@ const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('declaration-use-variable')
 let messages = stylelint.utils.ruleMessages(ruleName, {
-  rejected: `${msgPrefix.main} Excepted to use '%a' in '%b' prop `
+  rejected: (variable, prop) => `${msgPrefix.main} Excepted to use '${variable}' in '${prop}' prop `
 })
 
 function checkValue (val) {
@@ -23,10 +23,6 @@ function checkValue (val) {
   return regEx.test(val)
 }
 
-function msgOutput (variable, prop) {
-  return messages.rejected.replace('%a', variable).replace('%b', prop)
-}
-
 function rule (actual) {
   return (root, result) => {
     const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual})
@@ -34,7 +30,6 @@ function rule (actual) {
       return
     }
 
-    // 默认的提示信息
     const propsList = ['color', 'background', 'background-image', 'border', 'border-color']
 
     /**
@@ -56,7 +51,7 @@ function rule (actual) {
       if (decl.prop === 'color') {
         if (decl.value.indexOf('#787878') > -1) {
           stylelint.utils.report({
-            message: msgOutput('$common_color_gray', 'color'),
+            message: messages.rejected('$common_color_gray', 'color'),
             node: decl,
             result,
             ruleName
@@ -64,7 +59,7 @@ function rule (actual) {
           return
         } else if (decl.value.toUpperCase().indexOf('#38689F') > -1) {
           stylelint.utils.report({
-            message: msgOutput('$common_color_blue', 'color'),
+            message: messages.rejected('$common_color_blue', 'color'),
             node: decl,
             result,
             ruleName
@@ -72,7 +67,7 @@ function rule (actual) {
           return
         } else if (decl.value.toUpperCase().indexOf('#F05A5A') > -1) {
           stylelint.utils.report({
-            message: msgOutput('$$common_color_red', 'color'),
+            message: messages.rejected('$common_color_red', 'color'),
             node: decl,
             result,
             ruleName
@@ -84,7 +79,7 @@ function rule (actual) {
       if ((decl.prop.indexOf('border') > -1)) {
         if (decl.value.indexOf('#E4E6E9') > -1) {
           stylelint.utils.report({
-            message: msgOutput('$common_color_lightBorder', 'border(-color)'),
+            message: messages.rejected('$common_color_lightBorder', 'border(-color)'),
             node: decl,
             result,
             ruleName
@@ -92,7 +87,7 @@ function rule (actual) {
           return
         } else if (decl.value.toUpperCase().indexOf('#B4BEC8') > -1) {
           stylelint.utils.report({
-            message: msgOutput('$common_color_border', 'border(-color)'),
+            message: messages.rejected('$common_color_border', 'border(-color)'),
             node: decl,
             result,
             ruleName
@@ -103,7 +98,7 @@ function rule (actual) {
 
       if (((decl.prop.indexOf('background') > -1) && (decl.value.indexOf('url(') > -1 && (decl.value.indexOf('images/independent') > -1)))) {
         stylelint.utils.report({
-          message: msgOutput('$images_path', 'background(-image)'),
+          message: messages.rejected('$images_path', 'background(-image)'),
           node: decl,
           result,
           ruleName
