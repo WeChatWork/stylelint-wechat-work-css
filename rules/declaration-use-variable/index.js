@@ -30,6 +30,8 @@ function rule (actual) {
       return
     }
 
+    // TODO: 限制下位置
+
     const propsList = ['color', 'background', 'background-image', 'border', 'border-color']
 
     /**
@@ -48,6 +50,7 @@ function rule (actual) {
         return
       }
 
+      // TODO：写法优化下~
       if (decl.prop === 'color') {
         if (decl.value.indexOf('#787878') > -1) {
           stylelint.utils.report({
@@ -77,7 +80,7 @@ function rule (actual) {
       }
 
       if ((decl.prop.indexOf('border') > -1)) {
-        if (decl.value.indexOf('#E4E6E9') > -1) {
+        if (decl.value.toUpperCase().indexOf('#E4E6E9') > -1) {
           stylelint.utils.report({
             message: messages.rejected('$common_color_lightBorder', 'border(-color)'),
             node: decl,
