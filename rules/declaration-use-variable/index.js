@@ -44,7 +44,6 @@ function rule (actual) {
      * border, boder-color:  => $common_color_lightBorder, $common_color_border
      */
     root.walkDecls(decl => {
-      console.log(decl.source.input.file)
       // 修正在webstorm 上找不到源文件的 bug
       if (!decl.source.input.file) {
         return
