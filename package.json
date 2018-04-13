@@ -1,6 +1,6 @@
 {
   "name": "stylelint-wechat-work-css",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Special stylelint rules for `wechat at work` project css",
   "keywords": [
     "stylelint-plugin",
