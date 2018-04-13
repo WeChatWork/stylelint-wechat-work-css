@@ -4,6 +4,10 @@ const stylelint = require('stylelint')
 const namespace = require('../../utils/namespace')
 const msgPrefix = require('../../utils/messagePrefix')
 const ruleName = namespace('declaration-use-variable')
+const matchesStringOrRegExp = require('../../utils/matchesStringOrRegExp')
+const postcss = require('postcss')
+const path = require('path')
+
 let messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: (variable, prop) => `${msgPrefix.main} Excepted to use '${variable}' in '${prop}' prop `
 })
@@ -30,16 +34,33 @@ function rule (actual) {
       return
     }
 
-    // TODO: 限制下位置
-
     const propsList = ['color', 'background', 'background-image', 'border', 'border-color']
 
+    // 位置白名单
+    const fileDirWhiteListOption = ['logic']
     /**
      * color: #787878 => $common_color_gray
      * background-image: indepent => $img_path
      * border, boder-color:  => $common_color_lightBorder, $common_color_border
      */
     root.walkDecls(decl => {
+      console.log(decl.source.input.file)
+      // 修正在webstorm 上找不到源文件的 bug
+      if (!decl.source.input.file) {
+        return
+      }
+
+      // 从代码源scss文件中获取到命名空间
+      const fileDirArray = decl.source.input.file.split(path.sep)
+      const fileDir = fileDirArray[fileDirArray.length - 2]
+
+      // 排除特殊目录
+      const fileDirWhiteList = fileDirWhiteListOption
+      // console.log(fileDirWhiteList)
+      if (!matchesStringOrRegExp(postcss.vendor.unprefixed(fileDir), fileDirWhiteList)) {
+        return
+      }
+
       // 排除非罗列的 props
       if (propsList.indexOf(decl.prop) <= -1) {
         return

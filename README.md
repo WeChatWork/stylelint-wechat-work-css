@@ -21,7 +21,7 @@ npm i stylelint-wechat-work-css -D
 - `selector-namespace-follow-filename`: 业务CSS 的命名空间需要跟随文件名
 - `unused-mixins`: 因项目历史原因废弃不用的 minxins
 - `unused-nested-selector-namespace`：子选择器不能使用特定命名空间的类名（本项目为`qui_xxx`）
-
+- `declaration-use-variable`：一些声明使用Sass 变量
 
 ## Usege
 
@@ -58,6 +58,7 @@ Example:
     }
     ],
     'wechat-work/unused-nested-selector-namespace': true,
+    'wechat-work/declaration-use-variable': true,
   }
 }
 
