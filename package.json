@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/WeChatWork/stylelint-wechat-work-css",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "main": "index.js",
   "scripts": {
