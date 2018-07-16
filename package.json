@@ -38,7 +38,7 @@
   "dependencies": {
     "lodash.find": "^4.6.0",
     "lodash.isstring": "^4.0.1",
-    "postcss": "6.0.23",
+    "postcss": "7.0.0",
     "postcss-selector-parser": "^4.0.0",
     "stylelint": "9.3.0"
   }
