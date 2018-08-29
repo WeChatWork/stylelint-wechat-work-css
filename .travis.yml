@@ -9,4 +9,5 @@ cache:
     - node_modules
 before_install:
 - npm prune
+- npm install
 - npm update
