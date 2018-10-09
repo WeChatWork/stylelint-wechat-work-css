@@ -29,7 +29,7 @@ function checkValue (val) {
 
 function rule (actual) {
   return (root, result) => {
-    const validOptions = stylelint.utils.validateOptions(result, ruleName, {actual})
+    const validOptions = stylelint.utils.validateOptions(result, ruleName, { actual })
     if (!validOptions) {
       return
     }

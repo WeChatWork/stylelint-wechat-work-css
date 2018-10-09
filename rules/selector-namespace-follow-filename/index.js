@@ -17,7 +17,7 @@ function rule (actual, options) {
     const validOptions = stylelint.utils.validateOptions(
       result,
       ruleName,
-      {actual},
+      { actual },
       {
         actual: options,
         possible: {
