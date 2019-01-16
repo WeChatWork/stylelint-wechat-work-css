@@ -40,6 +40,6 @@
     "lodash.isstring": "^4.0.1",
     "postcss": "7.0.12",
     "postcss-selector-parser": "^5.0.0",
-    "stylelint": "9.9.0"
+    "stylelint": "9.10.0"
   }
 }
