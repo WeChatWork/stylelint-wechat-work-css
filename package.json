@@ -39,7 +39,7 @@
     "lodash.find": "^4.6.0",
     "lodash.isstring": "^4.0.1",
     "postcss": "7.0.12",
-    "postcss-selector-parser": "^5.0.0",
+    "postcss-selector-parser": "^6.0.1",
     "stylelint": "9.10.0"
   }
 }
