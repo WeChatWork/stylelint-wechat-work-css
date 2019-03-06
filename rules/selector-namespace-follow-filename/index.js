@@ -12,7 +12,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   expected: (selector, namespace) => `${msgPrefix.main} Expected selector "${selector}" to match source filename as namespace "${namespace}".`
 })
 
-function rule (actual, options) {
+function rule(actual, options) {
   return (root, result) => {
     const validOptions = stylelint.utils.validateOptions(
       result,
@@ -58,6 +58,11 @@ function rule (actual, options) {
       const fileDirWhiteList = options.fileDirWhiteList
       // console.log(fileDirWhiteList)
       if (matchesStringOrRegExp(postcss.vendor.unprefixed(fileDir), fileDirWhiteList)) {
+        return
+      }
+
+      // 排除 国际化相关
+      if (ruleSelector.indexOf('lang_en') > -1) {
         return
       }
 
